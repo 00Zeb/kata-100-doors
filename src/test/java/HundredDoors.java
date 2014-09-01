@@ -9,39 +9,36 @@ public class HundredDoors {
 	// 100 closed doors
 	// 100 opened doors
 	// every 2nd door
-	private final List<Door> allOpen = new ArrayList<>();
-	private final List<Door> allClosed = new ArrayList<>();
-	private final List<Door> doors;
+	private final List<Door> doors = new ArrayList<>();
 
 	public HundredDoors() {
 		for (int i = 0; i < 100; i++) {
-			allOpen.add(new Door(true));
-			allClosed.add(new Door(false));
+			doors.add(new Door(false));
 		}
-		doors = new ArrayList<>(allClosed);
 	}
 	
 	@Test
 	public void a_hundred_closed_doors() {
-		assertEquals(allClosed, doors);
+		for(Door door : doors)
+			assertFalse(door.isOpen);
 	}
 	
 	@Test
 	public void visit_each_door() {
 		visit(doors, 1);
-		assertEquals(allOpen, doors);
+		assertEquals(everyDoorIsOpen(1), doors);
 	}
 
 	@Test
 	public void visit_every_second_door() {
 		visit(doors, 2);
-		assertEquals(everySecondDoorIsOpen(), doors);
+		assertEquals(everyDoorIsOpen(2), doors);
 	}
 
-	private List<Door> everySecondDoorIsOpen() {
+	private List<Door> everyDoorIsOpen(int every) {
 		List<Door> doors = new ArrayList<>();
 		for (int i = 0; i < 100; i++) {
-			doors.add(new Door(i % 2 == 0));
+			doors.add(new Door(i % every == 0));
 		}
 		return doors;
 	}
