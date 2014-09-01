@@ -34,6 +34,18 @@ public class HundredDoors {
 		}
 
 		@Override
+		public int hashCode() {
+			return 31 * 1 + (isOpen ? 1231 : 1237);
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (getClass() != obj.getClass())
+				return false;
+			return isOpen == ((Door) obj).isOpen;
+		}
+
+		@Override
 		public String toString() {
 			return String.valueOf(isOpen);
 		}
@@ -53,8 +65,9 @@ public class HundredDoors {
 	}
 
 	private void visit(List<Door> doors) {
-		// TODO Auto-generated method stub
-		
+		for (Door door : doors) {
+			door.isOpen = true;
+		}
 	}
 
 	
