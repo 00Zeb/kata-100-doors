@@ -28,11 +28,22 @@ public class HundredDoors {
 	
 	@Test
 	public void visit_each_door() {
-		visit(doors);
+		visit(doors, 1);
 		assertEquals(allOpen, doors);
 	}
 
-	private void visit(List<Door> doors) {
+	@Test
+	public void visit_every_second_door() {
+		visit(doors, 2);
+		assertEquals(everySecondDoorIsOpen(), doors);
+	}
+
+	private static List<Door> everySecondDoorIsOpen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private void visit(List<Door> doors, Object newParam) {
 		for (Door door : doors) {
 			door.isOpen = true;
 		}
