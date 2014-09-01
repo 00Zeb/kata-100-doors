@@ -34,7 +34,18 @@ public class HundredDoors {
 		visit(doors, 2);
 		assertEquals(everyDoorIsOpen(2), doors);
 	}
-
+	
+	@Test
+	public void state_of_doors_are_dependant_on_previous_passes() {
+		visit(doors, 1);
+		visit(doors, 2);
+		assertFalse(doors.get(0).isOpen);
+		assertTrue(doors.get(1).isOpen);
+		assertFalse(doors.get(98).isOpen);
+		assertTrue(doors.get(99).isOpen);
+	}
+	
+	
 	private List<Door> everyDoorIsOpen(int every) {
 		List<Door> doors = new ArrayList<>();
 		for (int i = 0; i < 100; i++) {
