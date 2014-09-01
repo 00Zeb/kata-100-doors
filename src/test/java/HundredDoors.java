@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,23 +11,23 @@ public class HundredDoors {
 	// every 2nd door
 	private final List<Door> allOpen = new ArrayList<>();
 	private final List<Door> allClosed = new ArrayList<>();
+	private final List<Door> doors;
 
 	public HundredDoors() {
 		for (int i = 0; i < 100; i++) {
 			allOpen.add(new Door(true));
 			allClosed.add(new Door(false));
 		}
+		doors = new ArrayList<>(allClosed);
 	}
 	
 	@Test
 	public void a_hundred_closed_doors() {
-		List<Door> doors = new ArrayList<>(allClosed);
 		assertEquals(allClosed, doors);
 	}
 	
 	@Test
 	public void visit_each_door() {
-		List<Door> doors = new ArrayList<>(allClosed);
 		visit(doors);
 		assertEquals(allOpen, doors);
 	}
