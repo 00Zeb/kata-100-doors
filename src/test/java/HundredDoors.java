@@ -57,7 +57,7 @@ public class HundredDoors {
 	private void visit(List<Door> doors, int jumpSequence) {
 		for (int index = 0; index < doors.size(); index++) {
 			if(index % jumpSequence == 0)
-				doors.get(index).isOpen = true;
+				doors.get(index).isOpen = !doors.get(index).isOpen;
 		}
 	}
 }
