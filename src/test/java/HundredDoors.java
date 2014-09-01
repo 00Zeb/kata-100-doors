@@ -9,48 +9,16 @@ public class HundredDoors {
 	// 100 closed doors
 	// 100 opened doors
 	// every 2nd door
-	@SuppressWarnings("serial")
-	private static final List<Door> allOpen = new ArrayList<Door>() {
-		{
-			for (int i = 0; i < 100; i++) {
-				add(new Door(true));
-			}
-		}
-	};
-	@SuppressWarnings("serial")
-	private static final List<Door> allClosed = new ArrayList<Door>() {
-		{
-			for (int i = 0; i < 100; i++) {
-				add(new Door(false));
-			}
-		}
-	};
-	
-	private static class Door {
-		boolean isOpen;
+	private final List<Door> allOpen = new ArrayList<>();
+	private final List<Door> allClosed = new ArrayList<>();
 
-		public Door(boolean isOpen) {
-			this.isOpen = isOpen;
-		}
-
-		@Override
-		public int hashCode() {
-			return 31 * 1 + (isOpen ? 1231 : 1237);
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (getClass() != obj.getClass())
-				return false;
-			return isOpen == ((Door) obj).isOpen;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(isOpen);
+	public HundredDoors() {
+		for (int i = 0; i < 100; i++) {
+			allOpen.add(new Door(true));
+			allClosed.add(new Door(false));
 		}
 	}
-
+	
 	@Test
 	public void a_hundred_closed_doors() {
 		List<Door> doors = new ArrayList<>(allClosed);
@@ -69,6 +37,4 @@ public class HundredDoors {
 			door.isOpen = true;
 		}
 	}
-
-	
 }
