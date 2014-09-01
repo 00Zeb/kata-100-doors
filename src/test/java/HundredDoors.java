@@ -16,13 +16,13 @@ public class HundredDoors {
 			doors.add(new Door(false));
 		}
 	}
-	
+
 	@Test
 	public void a_hundred_closed_doors() {
-		for(Door door : doors)
+		for (Door door : doors)
 			assertFalse(door.isOpen);
 	}
-	
+
 	@Test
 	public void visit_each_door() {
 		visit(doors, 1);
@@ -34,7 +34,7 @@ public class HundredDoors {
 		visit(doors, 2);
 		assertEquals(everyDoorIsOpen(2), doors);
 	}
-	
+
 	@Test
 	public void state_of_doors_are_dependant_on_previous_passes() {
 		visit(doors, 1);
@@ -44,8 +44,7 @@ public class HundredDoors {
 		assertFalse(doors.get(98).isOpen);
 		assertTrue(doors.get(99).isOpen);
 	}
-	
-	
+
 	private List<Door> everyDoorIsOpen(int every) {
 		List<Door> doors = new ArrayList<>();
 		for (int i = 0; i < 100; i++) {
@@ -56,7 +55,7 @@ public class HundredDoors {
 
 	private void visit(List<Door> doors, int jumpSequence) {
 		for (int index = 0; index < doors.size(); index++) {
-			if(index % jumpSequence == 0) {
+			if (index % jumpSequence == 0) {
 				Door door = doors.get(index);
 				door.isOpen = !door.isOpen;
 			}
