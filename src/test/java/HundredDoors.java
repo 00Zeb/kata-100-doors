@@ -38,14 +38,18 @@ public class HundredDoors {
 		assertEquals(everySecondDoorIsOpen(), doors);
 	}
 
-	private static List<Door> everySecondDoorIsOpen() {
-		// TODO Auto-generated method stub
-		return null;
+	private List<Door> everySecondDoorIsOpen() {
+		List<Door> doors = new ArrayList<>();
+		for (int i = 0; i < 100; i++) {
+			doors.add(new Door(i % 2 == 0));
+		}
+		return doors;
 	}
 
-	private void visit(List<Door> doors, Object newParam) {
-		for (Door door : doors) {
-			door.isOpen = true;
+	private void visit(List<Door> doors, int jumpSequence) {
+		for (int index = 0; index < doors.size(); index++) {
+			if(index % jumpSequence == 0)
+				doors.get(index).isOpen = true;
 		}
 	}
 }
