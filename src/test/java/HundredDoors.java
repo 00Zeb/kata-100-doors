@@ -32,7 +32,8 @@ public class HundredDoors {
 	@Test
 	public void visit_every_second_door() {
 		visit(doors, 2);
-		assertEquals(everyDoorIsOpen(2), doors);
+		assertFalse(doors.get(0).isOpen);
+		assertTrue(doors.get(1).isOpen);
 	}
 
 	@Test
