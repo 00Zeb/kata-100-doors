@@ -44,8 +44,16 @@ public class HundredDoors {
 		assertFalse(doors.get(1).isOpen);
 		assertTrue(doors.get(98).isOpen);
 		assertFalse(doors.get(99).isOpen);
+		visit(doors, 3);
+		assertTrue(doors.get(0).isOpen);
+		assertFalse(doors.get(1).isOpen);
+		assertFalse(doors.get(2).isOpen);
+		assertFalse(doors.get(97).isOpen);
+		assertFalse(doors.get(98).isOpen);
+		assertFalse(doors.get(99).isOpen);
+		
 	}
-
+	
 	private List<Door> everyDoorIsOpen(int every) {
 		List<Door> doors = new ArrayList<>();
 		for (int i = 0; i < 100; i++) {
