@@ -54,6 +54,19 @@ public class HundredDoors {
 		
 	}
 	
+
+	public static void main(String[] args) {
+		HundredDoors hundredDoors = new HundredDoors();
+		for (int i = 1; i < 101; i++) {
+			hundredDoors.visit(hundredDoors.doors, i);
+		}
+		for (int i = 0; i < 100; i++) {
+			System.out.println(String.valueOf(i+1) +" : " + hundredDoors.doors.get(i).isOpen);
+		}
+		
+	}
+
+	
 	private List<Door> everyDoorIsOpen(int every) {
 		List<Door> doors = new ArrayList<>();
 		for (int i = 0; i < 100; i++) {
