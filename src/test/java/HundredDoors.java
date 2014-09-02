@@ -40,10 +40,10 @@ public class HundredDoors {
 	public void state_of_doors_are_dependant_on_previous_passes() {
 		visit(doors, 1);
 		visit(doors, 2);
-		assertFalse(doors.get(0).isOpen);
-		assertTrue(doors.get(1).isOpen);
-		assertFalse(doors.get(98).isOpen);
-		assertTrue(doors.get(99).isOpen);
+		assertTrue(doors.get(0).isOpen);
+		assertFalse(doors.get(1).isOpen);
+		assertTrue(doors.get(98).isOpen);
+		assertFalse(doors.get(99).isOpen);
 	}
 
 	private List<Door> everyDoorIsOpen(int every) {
@@ -56,7 +56,7 @@ public class HundredDoors {
 
 	private void visit(List<Door> doors, int jumpSequence) {
 		for (int index = 0; index < doors.size(); index++) {
-			if (index % jumpSequence == 0) {
+			if ((index + 1) % jumpSequence == 0) {
 				Door door = doors.get(index);
 				door.isOpen = !door.isOpen;
 			}
